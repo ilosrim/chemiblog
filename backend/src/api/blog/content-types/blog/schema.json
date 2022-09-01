@@ -23,18 +23,17 @@
       "type": "richtext",
       "required": true
     },
-    "splash": {
+    "imgs": {
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ],
       "type": "media",
-      "multiple": true
+      "multiple": true,
+      "required": true
     },
     "slug": {
-      "type": "string",
+      "type": "uid",
+      "targetField": "title",
       "required": true
     }
   }
