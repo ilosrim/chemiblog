@@ -1,23 +1,21 @@
-// import { ApolloClient, inMemoryCache, gql } from "@apollo/client"
+import Link from "next/link"
 
-// const URI = process.env.GRAPHQLURL
-
-export default function Home({ blogs }) {
+export default function Home() {
+  const nav = [
+    {label: "Home", path: "/"},
+    {label: "Blogs", path: "/blogs"},
+    {label: "About", path: "/about"},
+  ]
   return (
-    <h1 className='header'>Hello</h1>
+    <>
+      <h2>Home Page</h2>
+      <ul>
+        {nav.map(navEl => (
+          <li key={navEl.label}>
+            <Link href={navEl.path}>{navEl.label}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
   )
-}
-
-export async function getStaticProps(){
-  const url = process.env.STRAPIBASEURL
-
-  const res = await fetch(`${url}/api/blogs`)
-  const blogs = await res.json()
-
-  return {
-    props: {
-      blogs,
-    },
-    revalidate: 10
-  }
 }
